@@ -1,15 +1,14 @@
-'use strict';
-
 const Hapi = require('hapi');
 const Good = require('good');
+const Inert = require('inert');
 
-const {getBooks} = require('./storage');
+const {getBooks, getEmployees} = require('./storage');
 
 
 const server = new Hapi.Server();
 server.connection({
-    host: 'localhost',
-    port: 8000
+  host: 'localhost',
+  port: 8000,
 });
 
 // Register plugins
@@ -22,21 +21,21 @@ server.register([{
         name: 'Squeeze',
         args: [{
           response: '*',
-          log: '*'
-        }]
+          log: '*',
+        }],
       }, {
-        module: 'good-console'
-      }, 'stdout']
-    }
-  }
-}, require('inert')], (err) => {
+        module: 'good-console',
+      }, 'stdout'],
+    },
+  },
+}, Inert], (err) => {
   if (err) throw err;
 
   // Routes
   server.route({
     method: 'GET',
-    path:'/',
-    handler: function (request, reply) {
+    path: '/',
+    handler(request, reply) {
       return reply('Hello Inntec!');
     },
   });
@@ -53,15 +52,23 @@ server.register([{
 
   server.route({
     method: 'GET',
-    path:'/api/books',
-    handler: function (request, reply) {
+    path: '/api/books',
+    handler(request, reply) {
       return reply(getBooks());
     },
   });
 
+  server.route({
+    method: 'GET',
+    path: '/api/employees',
+    handler(request, reply) {
+      return reply(getEmployees());
+    },
+  });
+
   // Start server
-  server.start((err) => {
-    if (err) throw err;
-    server.log('info', 'Server running at: ' + server.info.uri);
+  server.start((startErr) => {
+    if (startErr) throw startErr;
+    server.log('info', `Server running at: ${server.info.uri}`);
   });
 });

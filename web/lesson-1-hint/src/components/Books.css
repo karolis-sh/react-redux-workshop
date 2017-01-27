@@ -1,0 +1,33 @@
+.books-header {
+  margin: 0 10px 15px 10px;
+}
+
+.books-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book {
+  margin: 10px;
+  width: 200px;
+}
+
+.book-cover {
+  height: 220px;
+  margin-bottom: 4px;
+}
+
+.book-cover > img {
+  width: auto;
+  height: 100%;
+}
+
+.book-title {
+  font-weight: bold;
+  padding: 2px 4px;
+}
+
+.book-author {
+  font-size: 14px;
+  padding: 0 4px;
+}

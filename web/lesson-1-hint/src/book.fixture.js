@@ -40,11 +40,4 @@ const books = [{
   cover: 'img/agile.jpg',
 }];
 
-const employees = [{
-  login: 'karolis',
-  name: 'Karolis',
-  surname: 'Šarapnickis',
-}];
-
-exports.getBooks = () => books;
-exports.getEmployees = () => employees;
+export default books;
