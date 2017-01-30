@@ -1,0 +1,87 @@
+/* books */
+.books__order {
+  margin: 0 10px;
+}
+
+.books__header {
+  margin: 0 10px 15px 10px;
+}
+
+.books__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* book-filter */
+.book-filter {
+  display: flex;
+  align-items: center;;
+}
+
+.book-filter__title-input {
+  margin-left: 20px;
+  padding: 0 5px;
+  height: 20px;
+  width: 100px;
+  border-radius: 2px;
+  border: 1px solid grey;
+}
+
+.book-filter__available-input {
+  margin-left: 20px;
+  margin-right: 6px;
+}
+
+/* book */
+.book {
+  margin: 10px;
+  width: 200px;
+}
+
+.book--selected {
+  color: blue;
+}
+
+.book--borrowed {
+  text-decoration: line-through;
+}
+
+.book__cover {
+  height: 220px;
+  margin-bottom: 4px;
+}
+
+.book__cover > img {
+  width: auto;
+  height: 100%;
+}
+
+.book__title {
+  font-weight: bold;
+  padding: 2px 4px;
+}
+
+.book__author {
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+/* book-booking */
+.book-booking {
+  display: flex;
+}
+
+.book-booking__cover {
+  height: 300px;
+  margin-right: 30px;
+}
+
+.book-booking__cover > img {
+  width: auto;
+  height: 100%;
+}
+
+.book-booking__form {
+  margin-top: 20px;
+  width: 300px;
+}

@@ -4,11 +4,11 @@ import './Books.css';
 
 const Book = ({cover, title, author}) =>
   <div className='book'>
-    <div className='book-cover'>
+    <div className='book__cover'>
       <img src={process.env.PUBLIC_URL + cover} alt={title} />
     </div>
-    <div className='book-title'>{title}</div>
-    <div className='book-author'>{author}</div>
+    <div className='book__title'>{title}</div>
+    <div className='book__author'>{author}</div>
   </div>;
 
 Book.propTypes = {
@@ -19,8 +19,8 @@ Book.propTypes = {
 
 const BookList = ({books}) =>
   <div>
-    <h2 className='books-header'>Book list</h2>
-    <div className='books-list'>
+    <h2 className='books__header'>Book list</h2>
+    <div className='books__list'>
       {books.map(book =>
         <Book key={book.id} {...book} />,
       )}

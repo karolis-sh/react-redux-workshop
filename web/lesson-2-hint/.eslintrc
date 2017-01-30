@@ -12,6 +12,7 @@
     "object-curly-spacing": [0],
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "max-len": ["error", 120]
+    "max-len": ["error", 120],
+    "jsx-a11/no-static-element-interactions": [0]
   }
 }

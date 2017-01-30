@@ -13,6 +13,7 @@ const books = [{
   title: 'You Don\'t Know JS: Up & Going',
   author: 'Kyle Simpson',
   cover: 'img/ydkjs1.jpg',
+  borrowedBy: 1,
 }, {
   id: 4,
   title: 'Thinking in Java',
@@ -41,9 +42,17 @@ const books = [{
 }];
 
 const employees = [{
-  login: 'karolis',
+  id: 1,
   name: 'Karolis',
   surname: 'Šarapnickis',
+}, {
+  id: 2,
+  name: 'Jonas',
+  surname: 'Jonaitis',
+}, {
+  id: 3,
+  name: 'Petrė',
+  surname: 'Stefanow',
 }];
 
 exports.getBooks = () => books;
