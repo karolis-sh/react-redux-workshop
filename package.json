@@ -1,0 +1,14 @@
+{
+  "name": "react-redux-workshop",
+  "version": "1.0.0",
+  "description": "---",
+  "author": "Karolis Šarapnickis <pastas.k@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buz-zard/react-redux-workshop.git"
+  },
+  "scripts": {
+    "installs": "cd api && npm i && cd ../web/lesson-1 && npm i && cd ../lesson-1-hint && npm i && cd ../lesson-2 && npm i && cd ../lesson-2-hint && npm i"
+  }
+}

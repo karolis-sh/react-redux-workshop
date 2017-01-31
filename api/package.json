@@ -10,6 +10,10 @@
   },
   "author": "Karolis Šarapnickis <pastas.k@gmail.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buz-zard/react-redux-workshop.git"
+  },
   "dependencies": {
     "good": "^7.1.0",
     "good-console": "^6.2.0",
