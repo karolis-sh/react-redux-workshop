@@ -73,7 +73,7 @@ class BookList extends React.Component {
   onBookSelect = bookId => this.props.books.forEach(book => book.id === bookId && this.setState({selectedBook: book}));
 
   render() {
-    const {books} = this.props;
+    const {books, onRefresh} = this.props;
     const {filter, selectedBook} = this.state;
     const filteredBooks = books
       .filter(item => filter.avalableOnly !== true || (filter.avalableOnly && item.borrowedBy == null))
@@ -81,7 +81,7 @@ class BookList extends React.Component {
     return (
       <div>
         <div className='books__order'>
-          {selectedBook && <BookBooking book={selectedBook} />}
+          {selectedBook && <BookBooking book={selectedBook} onRefresh={onRefresh} />}
         </div>
         <div className='books__header'>
           <h2>Book list</h2>
@@ -107,6 +107,7 @@ BookList.propTypes = {
     title: React.PropTypes.string.isRequired,
     author: React.PropTypes.string.isRequired,
   })),
+  onRefresh: React.PropTypes.func.isRequired,
 };
 
 BookList.defaultProps = {

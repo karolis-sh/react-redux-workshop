@@ -13,6 +13,7 @@ const books = [{
   title: 'You Don\'t Know JS: Up & Going',
   author: 'Kyle Simpson',
   cover: 'img/ydkjs1.jpg',
+  borrowedBy: 1,
 }, {
   id: 4,
   title: 'Thinking in Java',

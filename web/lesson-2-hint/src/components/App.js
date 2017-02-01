@@ -22,13 +22,15 @@ class App extends React.Component {
     api.getBooks().then(response => this.setState({books: response}));
   }
 
+  onRefresh = () => api.getBooks().then(response => this.setState({books: response}));
+
   render() {
     const {books} = this.state;
     return (
       <div className='app'>
         <Header />
         <div className='app-content'>
-          <Books books={books} />
+          <Books books={books} onRefresh={this.onRefresh} />
         </div>
       </div>);
   }

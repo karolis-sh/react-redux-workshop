@@ -62,6 +62,16 @@ server.register([{
   });
 
   server.route({
+    method: 'POST',
+    path: '/api/books',
+    handler(request, reply) {
+      const data = request.payload.json;
+      console.log(data);
+      return reply({});
+    },
+  });
+
+  server.route({
     method: 'GET',
     path: '/api/employees',
     handler(request, reply) {

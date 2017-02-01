@@ -12,6 +12,10 @@
   width: 200px;
 }
 
+.book--borrowed {
+  text-decoration: line-through;
+}
+
 .book__cover {
   height: 220px;
   margin-bottom: 4px;

@@ -20,14 +20,14 @@ class BookBooking extends React.Component {
   onEmplyeeSelect = ({value}) => this.setState({employeeId: value});
 
   onSubmit = (e) => {
-    const {book: {id, borrowedBy}} = this.props;
-    const {employeeId} = this.state;
     e.preventDefault();
+    const {book: {id, borrowedBy}, onRefresh} = this.props;
+    const {employeeId} = this.state;
     if (id && (employeeId || borrowedBy)) {
       if (employeeId) {
-        api.doBooking({bookId: id, employeeId}).then(() => console.log('Booked!'));
+        api.doBooking(id, employeeId).then(onRefresh);
       } else {
-        api.doUnbooking({bookId: id, employeeId}).then(() => console.log('Un-Booked!'));
+        api.doUnbooking(id, borrowedBy).then(onRefresh);
       }
     }
   }
@@ -65,6 +65,7 @@ BookBooking.propTypes = {
     title: React.PropTypes.string.isRequired,
     author: React.PropTypes.string.isRequired,
   }).isRequired,
+  onRefresh: React.PropTypes.func.isRequired,
 };
 
 export default BookBooking;
