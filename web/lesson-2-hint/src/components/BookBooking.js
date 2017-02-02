@@ -24,10 +24,10 @@ class BookBooking extends React.Component {
     const {book: {id, borrowedBy}, onRefresh} = this.props;
     const {employeeId} = this.state;
     if (id && (employeeId || borrowedBy)) {
-      if (employeeId) {
-        api.doBooking(id, employeeId).then(onRefresh);
+      if (borrowedBy) {
+        api.doUnbooking(id).then(onRefresh);
       } else {
-        api.doUnbooking(id, borrowedBy).then(onRefresh);
+        api.doBooking(id, employeeId).then(onRefresh);
       }
     }
   }

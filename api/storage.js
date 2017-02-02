@@ -57,3 +57,13 @@ const employees = [{
 
 exports.getBooks = () => books;
 exports.getEmployees = () => employees;
+exports.doBooking = ({bookId, employeeId}) => books.forEach((book) => {
+  if (book.id == bookId) { // eslint-disable-line
+    book.borrowedBy = employeeId; // eslint-disable-line
+  }
+});
+exports.doUnbooking = ({bookId}) => books.forEach((book) => {
+  if (book.id == bookId) { // eslint-disable-line
+    delete book.borrowedBy; // eslint-disable-line
+  }
+});

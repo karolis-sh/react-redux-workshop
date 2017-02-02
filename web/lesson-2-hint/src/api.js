@@ -4,12 +4,15 @@ import config from './config';
 const apiUrl = `${config.baseUrl}api`;
 
 const call = (method, url, body) => new Promise((resolve, reject) => {
-  const options = {method};
-  if (body != null) {
-    const data = new FormData();
-    data.append('json', JSON.stringify(body));
-    options.body = data;
-  }
+  const options = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  if (body) options.body = JSON.stringify(body);
+
   fetch(`${apiUrl}/${url}`, options).then((response) => {
     response.json().then(resolve);
   }).catch(reject);

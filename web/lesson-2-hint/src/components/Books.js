@@ -61,7 +61,7 @@ class BookList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {filter: {}, selectedBook: null};
+    this.state = {filter: {}, selectedBook: null, selectedBookId: null};
   }
 
   onFilterUpdate = (field, val) => {
@@ -70,14 +70,21 @@ class BookList extends React.Component {
     this.setState({filter});
   }
 
-  onBookSelect = bookId => this.props.books.forEach(book => book.id === bookId && this.setState({selectedBook: book}));
+  onBookSelect = bookId => this.setState({selectedBookId: bookId});
 
   render() {
     const {books, onRefresh} = this.props;
-    const {filter, selectedBook} = this.state;
+    const {filter, selectedBookId} = this.state;
+
     const filteredBooks = books
       .filter(item => filter.avalableOnly !== true || (filter.avalableOnly && item.borrowedBy == null))
       .filter(item => !filter.title || (item.title.toLowerCase().includes(filter.title.toLowerCase())));
+
+    let selectedBook;
+    books.forEach((book) => {
+      if (book.id === selectedBookId) selectedBook = book;
+    });
+
     return (
       <div>
         <div className='books__order'>
@@ -90,7 +97,7 @@ class BookList extends React.Component {
         <div className='books__list'>
           {filteredBooks.map(book =>
             <Book
-              key={book.id} {...book} onSelect={this.onBookSelect}
+              key={`${book.id}-${book.borrowedBy || ''}`} {...book} onSelect={this.onBookSelect}
               isSelected={selectedBook ? selectedBook.id === book.id : false}
               isBorrowed={book.borrowedBy != null}
             />,

@@ -2,7 +2,7 @@ const Hapi = require('hapi');
 const Good = require('good');
 const Inert = require('inert');
 
-const {getBooks, getEmployees} = require('./storage');
+const {getBooks, getEmployees, doBooking, doUnbooking} = require('./storage');
 
 
 const server = new Hapi.Server();
@@ -65,9 +65,22 @@ server.register([{
     method: 'POST',
     path: '/api/books',
     handler(request, reply) {
-      const data = request.payload.json;
-      console.log(data);
-      return reply({});
+      if (request.payload) {
+        const data = request.payload;
+        switch (data.action) {
+          case 'BOOK':
+            doBooking(data);
+            console.log('doBooking', data);
+            return reply({});
+          case 'UNBOOK':
+            doUnbooking(data);
+            console.log('doUnbooking', data);
+            return reply({});
+          default:
+            return reply({}).code(404);
+        }
+      }
+      return reply({}).code(404);
     },
   });
 
