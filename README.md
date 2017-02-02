@@ -13,7 +13,13 @@
 
 #### Setup
 
-`npm run installs` - installs all required dependencies.
++ `npm run installs` - installs all required dependencies.
+
+#### Workflow
+
++ Start api server - `cd api && npm start`
++ Start react app - `cd web/lesson-1 && npm start`
++ Code!
 
 #### Links
 

@@ -1,0 +1,13 @@
+.header {
+  background-color: #ddd;
+  padding: 20px 40px;
+  font-size: 20px;
+}
+
+.app-content {
+  padding: 40px 30px;
+}
+
+.app-content > * {
+  margin: 0 auto;
+}
