@@ -11,6 +11,10 @@
   - Editor with ES6 and JSX syntax highlight and linting support - ex. [nuclide setup][nuclide-setup] (ignore flow setup). Linting is optional but helpful.
 
 
+#### Setup
+
+`npm run installs` - installs all required dependencies.
+
 #### Links
 
 + Quick learn react [ebook][react-ref]
