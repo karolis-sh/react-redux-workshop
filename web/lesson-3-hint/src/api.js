@@ -1,8 +1,6 @@
 import config from './config';
 
 
-const apiUrl = `${config.baseUrl}api`;
-
 const call = (method, url, body) => new Promise((resolve, reject) => {
   const options = {
     method,
@@ -13,7 +11,7 @@ const call = (method, url, body) => new Promise((resolve, reject) => {
 
   if (body) options.body = JSON.stringify(body);
 
-  fetch(`${apiUrl}/${url}`, options).then((response) => {
+  fetch(`${config.baseUrl}api/${url}`, options).then((response) => {
     response.json().then(resolve);
   }).catch(reject);
 });

@@ -1,5 +1,6 @@
-import 'whatwg-fetch';
+import 'whatwg-fetch'; // fetch polyfill
 import 'react-select/dist/react-select.css';
+
 import store from './store';
 
 

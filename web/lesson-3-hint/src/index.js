@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {init, store} from './config';
@@ -14,4 +14,4 @@ const ReduxApp = () =>
     <App />
   </Provider>;
 
-ReactDOM.render(<ReduxApp />, document.getElementById('root'));
+render(<ReduxApp />, document.getElementById('root'));

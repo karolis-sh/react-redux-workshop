@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import classNames from 'classnames';
 
+import {selectBook} from '../actions/book';
 import config from '../config';
 import BookBooking from './BookBooking';
 import './Books.css';
@@ -73,8 +75,8 @@ class BookList extends React.Component {
   onBookSelect = bookId => this.setState({selectedBookId: bookId});
 
   render() {
-    const {books, onRefresh} = this.props;
-    const {filter, selectedBookId} = this.state;
+    const {books, onRefresh, onBookSelect, selectedBookId} = this.props;
+    const {filter} = this.state;
 
     const filteredBooks = books
       .filter(item => filter.avalableOnly !== true || (filter.avalableOnly && item.borrowedBy == null))
@@ -97,7 +99,7 @@ class BookList extends React.Component {
         <div className='books__list'>
           {filteredBooks.map(book =>
             <Book
-              key={`${book.id}-${book.borrowedBy || ''}`} {...book} onSelect={this.onBookSelect}
+              key={`${book.id}-${book.borrowedBy || ''}`} {...book} onSelect={onBookSelect}
               isSelected={selectedBook ? selectedBook.id === book.id : false}
               isBorrowed={book.borrowedBy != null}
             />,
@@ -113,12 +115,29 @@ BookList.propTypes = {
     cover: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired,
     author: React.PropTypes.string.isRequired,
-  })),
+  })).isRequired,
   onRefresh: React.PropTypes.func.isRequired,
+  onBookSelect: React.PropTypes.func.isRequired,
+  selectedBookId: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number,
+  ]),
 };
 
 BookList.defaultProps = {
-  books: [],
+  selectedBookId: null,
 };
 
-export default BookList;
+const BookListContainer = connect(
+  state => ({
+    books: state.book.books,
+    selectedBookId: state.book.selectedBookId,
+  }),
+  dispatch => ({
+    onBookSelect(bookId) {
+      dispatch(selectBook(bookId));
+    },
+  }),
+)(BookList);
+
+export default BookListContainer;
