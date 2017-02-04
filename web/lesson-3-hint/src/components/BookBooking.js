@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Select from 'react-select';
 
+import {loadBooks} from '../actions/book';
 import config from '../config';
 import api from '../api';
 import './Books.css';
@@ -21,20 +23,20 @@ class BookBooking extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const {book: {id, borrowedBy}, onRefresh} = this.props;
+    const {book: {id, borrowedBy}, onSubmitted} = this.props;
     const {employeeId} = this.state;
     if (id && (employeeId || borrowedBy)) {
       if (borrowedBy) {
-        api.doUnbooking(id).then(onRefresh);
+        api.doUnbooking(id).then(onSubmitted);
       } else {
-        api.doBooking(id, employeeId).then(onRefresh);
+        api.doBooking(id, employeeId).then(onSubmitted);
       }
     }
   }
 
   render() {
-    const {book: {title, cover, author, borrowedBy}} = this.props;
-    const {employees, employeeId} = this.state;
+    const {book: {title, cover, author, borrowedBy}, employees} = this.props;
+    const {employeeId} = this.state;
     return (
       <form className='book-booking'>
         <div className='book-booking__cover'>
@@ -61,11 +63,37 @@ class BookBooking extends React.Component {
 
 BookBooking.propTypes = {
   book: React.PropTypes.shape({
+    id: React.PropTypes.number.isRequired,
     cover: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired,
     author: React.PropTypes.string.isRequired,
+    borrowedBy: React.PropTypes.number,
   }).isRequired,
-  onRefresh: React.PropTypes.func.isRequired,
+  employees: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id: React.PropTypes.number.isRequired,
+    name: React.PropTypes.string.isRequired,
+    surname: React.PropTypes.string.isRequired,
+  })),
+  onSubmitted: React.PropTypes.func.isRequired,
 };
 
-export default BookBooking;
+BookBooking.defaultProps = {
+  employees: [],
+};
+
+
+const BookBookingWrapper = props => props.book ? <BookBooking {...props} /> : null; // eslint-disable-line
+
+const BookBookingContainer = connect(
+  state => ({
+    book: state.book.selectedBook,
+    employees: state.employee.employees,
+  }),
+  dispatch => ({
+    onSubmitted() {
+      dispatch(loadBooks());
+    },
+  }),
+)(BookBookingWrapper);
+
+export default BookBookingContainer;

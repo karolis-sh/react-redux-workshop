@@ -1,8 +1,4 @@
 /* books */
-.books__order {
-  margin: 0 10px;
-}
-
 .books__header {
   margin: 0 10px 15px 10px;
 }
@@ -66,9 +62,16 @@
   padding: 0 4px;
 }
 
+.book__borrower {
+  padding: 4px;
+  float: left;
+  color: red;
+}
+
 /* book-booking */
 .book-booking {
   display: flex;
+  padding: 0 10px;
 }
 
 .book-booking__cover {
