@@ -14,8 +14,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
-    "react-scripts": "0.8.5",
-    "redux-devtools-extension": "^2.0.0"
+    "react-scripts": "0.8.5"
   },
   "dependencies": {
     "classnames": "^2.2.5",
