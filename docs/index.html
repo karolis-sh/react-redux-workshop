@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>react + redux workshop</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -21,30 +21,135 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+<body>
+<div class="reveal">
+<div class="slides">
+<!--------------------------------------------------------------------------------------------------------------------->
+<!-- START OF SLIDES -->
+<!--------------------------------------------------------------------------------------------------------------------->
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+<section>
+	<img src="./img/react.png" width="100" height="100" style="margin-right: 250px; border: none; background: none; box-shadow: none;"/>
+	<img src="./img/redux.png" width="100" height="100" style="border: none; background: none; box-shadow: none;"/>
+	<h1>react + redux</h1>
+	<p>intro + workshop</p>
+</section>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+<section data-markdown>
+  <script type="text/template">
+### React - UI library
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+- Component-Based
+- Virtual DOM
+- One-way data binding
+  </script>
+</section>
+
+<section data-markdown>
+  <script type="text/template">
+### Redux - state container
+
+- Consistent state management
+- Easy to test
+- Great developer experience
+  </script>
+</section>
+
+<section>
+	<section>
+		<p>React hello world</p>
+	  <pre><code data-trim data-noescape>
+			// 1
+			const HelloMessage = (props) =>
+			  &ltdiv>Hello {props.name}&lt/div>;
+
+			// 2
+			class HelloMessage extends React.Component {
+			  render() {
+			    return &ltdiv>Hello {this.props.name}&lt/div>;
+			  }
+			}
+
+			ReactDOM.render(&ltHelloMessage name="Inntec" />, mountNode);
+	  </code></pre>
+		<p>=></p>
+	  <pre><code data-trim data-noescape>
+			Hello Inntec
+	  </code></pre>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+	### Component lifecycle
+
+	- props - read-only values
+	- state - changes over component lifecycle
+	- Lifecycle class methods:
+		- componentWillMount
+		- componentDidMount
+		- componentWillUnmount
+		- etc.
+	  </script>
+	</section>
+</section>
+
+<section>Redux...</section>
+
+<section>
+	<section>
+		<h1>Workshop</h1>
+		<p>Time to code!</p>
+	</section>
+
+	<section>
+		<p>Start api server:</p>
+	  <pre><code data-trim data-noescape>
+			cd api && npm star
+	  </code></pre>
+		<p>Start react app:</p>
+	  <pre><code data-trim data-noescape>
+			cd web/lesson-1 && npm start
+	  </code></pre>
+	</section>
+</section>
+
+<section>
+	<h5>Lesson 1</h5>
+	<img src="./img/lesson-1-a.png" height="600" style="border: none; background: none; box-shadow: none;"/>
+</section>
+
+<section>
+	<h5>Lesson 2</h5>
+	<img src="./img/lesson-2-a.png" height="600" style="border: none; background: none; box-shadow: none;"/>
+</section>
+
+<section>
+	<h5>Lesson 3</h5>
+	<img src="./img/lesson-3-a.png" height="600" style="border: none; background: none; box-shadow: none;"/>
+</section>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+<!-- END OF SLIDES -->
+<!--------------------------------------------------------------------------------------------------------------------->
+</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
 </html>
