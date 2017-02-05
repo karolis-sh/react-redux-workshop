@@ -80,20 +80,90 @@
 
 	<section data-markdown>
 	  <script type="text/template">
-	### Component lifecycle
+### Component lifecycle
 
-	- props - read-only values
-	- state - changes over component lifecycle
-	- Lifecycle class methods:
-		- componentWillMount
-		- componentDidMount
-		- componentWillUnmount
-		- etc.
+- props - read-only values
+- state - changes over component lifecycle
+- Lifecycle class methods:
+	- componentWillMount
+	- componentDidMount
+	- componentWillUnmount
+	- etc.
 	  </script>
 	</section>
 </section>
 
-<section>Redux...</section>
+<section>
+	<section>
+		<h4>Redux</h4>
+		<p>(previousState, action) => newState</p>
+		<img src="./img/redux-flow.png" height="400" style="border: none; background: none; box-shadow: none;"/>
+	</section>
+
+	<section>
+		<h5>State</h5>
+	  <pre><code data-trim data-noescape>
+			const DEFAULT_STATE = {
+			  selectedBook: null,
+			  books: [],
+			  employees: [],
+			};
+	  </code></pre>
+	</section>
+
+	<section>
+		<h5>ACTIONS (1)</h5>
+	  <pre><code data-trim data-noescape>
+			export const startBooksLoading = () => ({
+			  type: START_BOOKS_LOADING,
+			});
+
+			export const endBooksLoading = books => ({
+			  type: BOOKS_LOADED,
+			  payload: books,
+			});
+
+			export const selectBook = bookId => ({
+			  type: BOOK_SELECTED,
+			  payload: bookId,
+			});
+	  </code></pre>
+	</section>
+
+	<section>
+		<h5>ACTIONS (2)</h5>
+	  <pre><code data-trim data-noescape>
+			export const loadBooks = () => dispatch => (
+			  new Promise((resolve, reject) => {
+			    dispatch(startBooksLoading());
+			    api.getBooks()
+			      .then((data) => {
+			        dispatch(endBooksLoading(data));
+			        resolve();
+			      })
+			      .catch(reject);
+			  })
+			);
+	  </code></pre>
+	</section>
+
+	<section>
+		<h5>REDUCER</h5>
+	  <pre><code data-trim data-noescape>
+			export default (state = DEFAULT_STATE, {type, payload}) => {
+			  switch (type) {
+			    case BOOKS_LOADED:
+			      return {
+			        ...state,
+			        books: payload,
+			      };
+			    default:
+			      return state;
+			  }
+			};
+	  </code></pre>
+	</section>
+</section>
 
 <section>
 	<section>

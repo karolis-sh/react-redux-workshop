@@ -16,11 +16,6 @@ export const endBooksLoading = books => ({
   payload: books,
 });
 
-export const filterBooks = filter => ({
-  type: BOOK_SELECTED,
-  payload: filter,
-});
-
 export const selectBook = bookId => ({
   type: BOOK_SELECTED,
   payload: bookId,
