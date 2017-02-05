@@ -23,7 +23,7 @@
 
 #### Links
 
-+ [Slides[slides]
++ [Slides][slides]
 + Quick learn react [ebook][react-ref]
 
 ---
