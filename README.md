@@ -1,7 +1,5 @@
 # react-redux-workshop
 
----
-
 #### Prerequisites
 
 + Have node/npm installed.
@@ -26,7 +24,6 @@
 + [Slides][slides]
 + Quick learn react [ebook][react-ref]
 
----
 [es6-cheatsheet]: https://github.com/DrkSephy/es6-cheatsheet
 [nuclide-setup]: https://egghead.io/lessons/react-setup-nuclide-to-use-flow-and-eslint-mac
 [react-ref]: https://www.robinwieruch.de/the-road-to-learn-react/
