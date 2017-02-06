@@ -11,6 +11,7 @@
 
 #### Setup
 
++ `git clone https://github.com/buz-zard/react-redux-workshop .`
 + `npm run installs` - installs all required dependencies.
 
 #### Workflow
